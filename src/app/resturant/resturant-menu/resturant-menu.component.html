@@ -1,0 +1,206 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<nav class="navbar navbar-expand-lg navbar-light bg-light "
+    style="background: linear-gradient(to bottom, #feb334 0%, #e0730d 100%);">
+
+    <div class=" row">
+        <div class="col-sm-12">
+            <img src="/assets/logo.png" style="width: 70px; margin-left: 5%;">
+        </div>
+    </div>
+    <a class="navbar-brand" routerLink="/Dashboard"><b>
+            Book My Table</b></a>
+
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <button class="btn btn-primary"
+                style=" background-color: #feb334; width: 200px; margin-left:10px; margin-top:50px ;"
+                (click)="menuFOrm()">AddMenu</button>
+            <button class="btn btn-primary"
+                style=" background-color: #feb334; width: 200px; margin-left:10px; margin-top:50px ;"
+                (click)="categoryForm()">Add
+                Category</button>
+
+
+        </div>
+        <div class="col-sm-6">
+            <div style=" margin-top:20px ;">
+                <form *ngIf="addMenuForm==true" #f="ngForm" style="background-color: #feb334;border-radius: 25px;">
+                    <div class="form-group" style="width: 80%;margin: auto;">
+                        <label for="name">Enter Product Name</label>
+                        <input style=" border-width: 0; border-radius: 50px;" class="input" #name="ngModel" ngModel
+                            name="name" type="text" class="form-control" placeholder="Enter Product Name " id="name"
+                            required minlength="3">
+                    </div>
+                    <div style="width: 100%; background-color:red;color: white; border-radius: 25px "
+                        *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+
+                        <div *ngIf="name.errors.required">
+                            Name is required.
+                        </div>
+                        <div *ngIf="name.errors.minlength">
+                            Name cannot be less than 3 characters.
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="width: 80%;margin: auto;">
+                        <label for="price">Enter Product Price</label>
+                        <input style=" border-width: 0; border-radius: 50px;" class="input" #price="ngModel" ngModel
+                            name="price" type="number" class="form-control" placeholder="Enter Product Price "
+                            id="price" required minlength="1">
+                    </div>
+                    <div style="width: 80%;margin: auto; background-color:red;color: white; border-radius: 25px "
+                        *ngIf="price.invalid && (price.dirty || price.touched)" class="alert alert-danger">
+
+                        <div *ngIf="price.errors.required">
+                            price is required.
+                        </div>
+                        <div *ngIf="price.errors.minlength">
+                            price cannot be less than 10.
+                        </div>
+                    </div>
+                    <div class="form-group" style="width: 80%;margin: auto;">
+                        <label for="phone">Discription</label>
+                        <input #discription="ngModel" [(ngModel)]="updatemenu.discription" name="discription"
+                            type="text" class="form-control" placeholder="Discription">
+                    </div>
+
+
+                    <br>
+                    <div class="form-group" style="width: 80%;margin: auto;">
+                        <label for="cars">Enter a category</label>
+
+                        <select style=" border-width: 0; border-radius: 50px; width: 80%;margin: auto;" name="hhh">
+                            <option value="?">Please Select</option>
+                            <option selected *ngFor="let category of categories">
+                                {{category.name}}
+                            </option>
+                        </select>
+
+                        <!-- <input #categie="ngModel" [(ngModel)]="updatemenu.categie" name="categie" type="text"
+                            class="form-control" placeholder="category"> -->
+                    </div>
+
+                    <br>
+                    <button class="btn btn-primary" style="margin-bottom: 3%; width: 80%;margin-left: 10%; margin-right: 25%; border-radius: 50px;
+                       background-color: white; color: black;" type="submit" [disabled]="f.invalid"
+                        (click)="addMenu(f)">Add
+                        Menu</button>
+                    <br>
+                    <br>
+                </form>
+            </div>
+            <div style=" margin-top:20px ;">
+                <form *ngIf="addCategoryForm==true" #f="ngForm" style="background-color: #feb334;border-radius: 25px;">
+                    <div class="form-group" style="width: 80%;margin: auto;">
+                        <label for="name">Enter Category Name</label>
+                        <input style=" border-width: 0; border-radius: 50px;" class="input" #name="ngModel" ngModel
+                            name="name" type="text" class="form-control" placeholder="Enter Product Name " id="name"
+                            required minlength="3">
+                    </div>
+                    <div style="width: 100%; background-color:red;color: white; border-radius: 25px "
+                        *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+
+                        <div *ngIf="name.errors.required">
+                            Name is required.
+                        </div>
+                        <div *ngIf="name.errors.minlength">
+                            Name cannot be less than 3 characters.
+                        </div>
+                    </div>
+
+                    <br>
+                    <button class="btn btn-primary" style="margin-bottom: 3%; width: 80%;margin-left: 10%; margin-right: 25%; border-radius: 50px;
+                       background-color: white; color: black;" type="submit" [disabled]="f.invalid"
+                        (click)="addNewCategory(f)">Add
+                        Category</button>
+                    <br>
+                    <br>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<div class="container">
+    <h1 style="font-family: Lucida Handwriting;">
+        <b>Menu List:</b>
+    </h1>
+    <hr>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <table id="customers" datatable class="row-border hover">
+                <thead>
+
+                    <tr>
+                        <th>Title</th>
+                        <th>Price</th>
+                        <th>Discription</th>
+                        <th>category</th>
+                        <th>Edit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let menu of menus;">
+                        <td>{{menu.name}}</td>
+                        <td style="margin-left: 150px;"> {{menu.price}}</td>
+                        <td>{{menu.discription}}</td>
+                        <td>{{menu.categie}}</td>
+                        <td> <i class="fa fa-edit" (click)="updateMenuForm(menu)"></i></td>
+                        <!-- <td>
+                        <button style="font-size:24px; float: right;" ><i
+                                class="fa fa-edit"></i></button>
+                    </td> -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div></div>
+        <div class="col-sm-6">
+            <div *ngIf="updateForm==true">
+                <!-- <h2> {{updatemenu}} </h2> -->
+                <form #f="ngForm" style="background-color:transparent;">
+                    <div class="form-group" style="width: 80%;margin: auto;">
+                        <label for="name">Product Name</label>
+                        <input #name="ngModel" [(ngModel)]="updatemenu.name" name="name" type="text"
+                            class="form-control" placeholder=" Name">
+                    </div>
+                    <div class="form-group" style="width: 80%;margin: auto;">
+                        <label for="phone">price</label>
+                        <input #price="ngModel" [(ngModel)]="updatemenu.price" name="price" type="number"
+                            class="form-control" placeholder="price No">
+                    </div>
+                    <div class="form-group" style="width: 80%;margin: auto;">
+                        <label for="phone">Discription</label>
+                        <input #discription="ngModel" [(ngModel)]="updatemenu.discription" name="discription"
+                            type="text" class="form-control" placeholder="Discription">
+                    </div>
+
+
+
+                    <div class="form-group" style="width: 80%;margin: auto;">
+                        <label for="cars">Enter a category</label>
+
+                        <input #categie="ngModel" [(ngModel)]="updatemenu.categie" name="categie" type="text"
+                            class="form-control" placeholder="category">
+                        <!-- <select id="cars" name="categie">
+                            <option *ngFor="let menu of resturant.menucategies;">
+                                {{menu.name}}</option>
+                        </select> -->
+                    </div>
+
+                    <br>
+                    <div>
+                        <input value="update Menu"
+                            style="width: 80%;margin-left: 15%; margin-right: 15%; border-radius: 50px; background-color: #feb335;"
+                            type="submit" class="btn btn-primary" (click)=upateMenu(updatemenu._id,f)>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

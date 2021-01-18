@@ -1,0 +1,87 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<nav class="navbar navbar-expand-lg navbar-light bg-light "
+    style="background: linear-gradient(to bottom, #feb334 0%, #e0730d 100%);">
+
+    <div class=" row">
+        <div class="col-sm-12">
+            <img src="/assets/logo.png" style="width: 70px; margin-left: 5%;">
+        </div>
+    </div>
+
+    <a class="navbar-brand" routerLink="/Dashboard"><b>
+            Book My Table</b></a>
+
+</nav>
+<br>
+<h1 style="font-family: Lucida Handwriting;">
+    <b>
+        New Resturants Requests
+    </b>
+</h1>
+<!-- <img src="/assets/background.jpg" alt="Card image cap" style="margin-left: 13%; width: 60%; border-radius: 10%;">
+            <br><br> -->
+<!-- <h2 style="margin-left: 30px;"><b>{{resturant.name}}</b></h2>
+
+        <div style="margin-left: 10px;"><b>Profile</b></div>
+        <a routerLink="ResturantProfile" class="w3-bar-item w3-button">view Profile</a>
+        <a routerLink="ResturantProfile" class="w3-bar-item w3-button">Update Profile</a>
+
+
+        <div style="margin-left: 10px;"><b>Menu</b></div>
+        <a (click)="getMenu(resturant)" class="w3-bar-item w3-button">View Menu</a>
+        <a (click)="getMenu(resturant)" class="w3-bar-item w3-button">Add Item in Menu</a>
+        <a (click)="getMenu(resturant)" class="w3-bar-item w3-button">Update Item in Menu</a>
+
+
+        <div style="margin-left: 10px;"><b>Reservations</b></div>
+        <a routerLink="newReservationRequest" class="w3-bar-item w3-button">New Reservation
+            Requests <span class="w3-badge w3-red">{{totalRservations}}</span></a>
+        <a routerLink="confirmRservations" class="w3-bar-item w3-button">Confirm Reservations <span
+                class="w3-badge w3-green">{{confirmRservations}}</span> </a>
+        <a routerLink="completedRservations" class="w3-bar-item w3-button">Completed Reservations </a>
+
+        <div style="margin-left: 10px;"><b>Deliveries</b></div>
+        <a routerLink="newDeliveryRequest" class="w3-bar-item w3-button">New Delivery Requests <span
+                class="w3-badge w3-red">{{newDeliveries}}</span></a>
+        <a routerLink="confirmDelivery" class="w3-bar-item w3-button">Confirm Deliveries <span
+                class="w3-badge w3-green">{{confirmDeliveries}}</span> </a>
+        <a routerLink="completedDelivery" class="w3-bar-item w3-button">Completed Delivery </a> -->
+
+
+
+<div class="container-fluid">
+
+    <table id="customers" datatable class="row-border hover">
+        <thead>
+            <tr>
+                <th>Resturant Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Location</th>
+                <th>TypeOfResturant</th>
+                <th>EasyPaisaName</th>
+                <th>EasyPaisaPhoneNo</th>
+                <th>Date Of Registeration</th>
+                <th>Verified</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let resturant of resturants;">
+                <td>{{resturant.name}}</td>
+                <td>{{resturant.phone}}</td>
+                <td>{{resturant.email}}</td>
+                <td>{{resturant.location}}</td>
+                <td>{{resturant.typeOfResturant}}</td>
+                <td>{{resturant.easyPaisaName}}</td>
+                <td>{{resturant.easyPaisaPhoneNo}}</td>
+                <td>{{resturant.dateOfRegisteration | date:'dd-MM-yyyy'}}</td>
+
+                <td>
+
+                    <button class="btn btn-primary" (click)="approveResturant(resturant._id,a)">Verified
+                        Resturant </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

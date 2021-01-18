@@ -1,0 +1,185 @@
+<div class="container-fluid">
+
+    <br>
+    <img src="/assets/background.jpg" style="width: 70%;  margin: auto;">
+    <br>
+    <h1 style="font-family: Lucida Handwriting;"><b>{{resturant.name}}</b></h1>
+
+    <span> &#9679; {{resturant.typeOfResturant}}</span>
+    <span> &#9679;{{resturant.menucategies[0].name}}</span>
+    <span *ngIf="resturant.menucategies[1].name!=null">
+        &#9679; {{resturant.menucategies[1].name}}</span>
+    <br>
+    <br>
+    <button class="btn btn-primary" style="background: linear-gradient(to bottom, #feb334 0%, #e0730d 100%);"
+        (click)=getReviews(resturant._id)> Reviews</button>
+
+    <hr>
+    <ul>
+        <li style="float: left;margin-left:20px;" *ngFor="let categry of resturant.menucategies; 
+           index as i">
+
+            {{categry.name}} </li>
+
+    </ul>
+    <br>
+
+
+
+</div>
+
+
+<div class="container-" style="background: linear-gradient(to bottom, #feb334 0%, #e0730d 100%);" id="mySidebar">
+
+    <div class="row">
+        <div class="col-sm-6">
+            <h1 *ngFor="let resturant of resturant.menucategies">
+                <!-- id={{resturant.name}} -->
+                <b> {{resturant.name}}</b>
+
+                <div *ngFor="let menu of menus;">
+                    <div *ngIf="menu.categie===resturant.name">
+                        <div class="card" style="margin-bottom: 5px;">
+                            <div class="container">
+                                <div>
+                                    <h2><b> {{menu.name}}</b></h2>
+                                    <h3>{{menu.discription}}</h3>
+                                    <button class="btn btn-danger" style="float:right;" (click)="AddToCart(menu)">Add To
+                                        Order
+                                        List</button>
+                                    <span>PKR: {{menu.price}}</span>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </h1>
+
+        </div>
+        <div class="col-sm-6">
+            <h2 class="#news">Order Details</h2>
+            <hr>
+            <h2>Your Order</h2>
+
+
+            <div>
+                <table>
+                    <tr>
+                        <th>Title</th>
+                        <th>Price</th>
+                    </tr>
+                    <tr *ngFor="let order of order;">
+                        <td>{{order.name}}</td>
+                        <td style="margin-left: 150px;"> {{order.price}}</td>
+                        <td><button class="btn btn-danger" style="margin-left:20px ; float: right;"
+                                (click)="AddToCart(order)">+</button>
+                            <button class="btn btn-danger" style="margin-left:40px ;  float: right;"
+                                (click)="removeToCart(order)">-</button>
+                        </td>
+                    </tr>
+                    <tfoot>
+                        <tr>Total Bill
+
+                            <td><b>{{total}}</b></td>
+                        </tr>
+                    </tfoot>
+
+
+
+                </table>
+            </div>
+            <!-- var n={{resturant.sittingCapacity}} -->
+            <div *ngIf="order.length >=1 ">
+                <br>
+                <h2>Reservation Details</h2>
+                <form #f="ngForm" style="background-color:transparent;">
+                    <div class="form-group" style="width: 80%;margin: auto;">
+                        <label for="noOfPersons">Enter No Guests</label>
+                        <input #noOfPersons="ngModel" ngModel name="noOfPersons" type="number" class="form-control"
+                            placeholder="Enter No Guests" id="Enter No Guests" required maxlength=n>
+
+                    </div>
+                    <div style="width: 100%; background-color:red;color: white; border-radius: 25px "
+                        *ngIf="noOfPersons.invalid && (noOfPersons.dirty || noOfPersons.touched)"
+                        class="alert alert-danger">
+
+                        <div *ngIf="noOfPersons.errors.required">
+                            Resturant have only {{resturant.sittingCapacity}} persos sitting.
+                        </div>
+                        <div *ngIf="noOfPersons.errors.maxlength">
+                            Name cannot be greater than {{resturant.sittingCapacity}} .
+                        </div>
+
+                    </div>
+
+                    <br>
+
+                    <div class="form-group" style="width: 80%;margin: auto;">
+                        <label for="dateOfReservation">Select Date For Reservation</label>
+                        <input #dateOfReservation="ngModel" ngModel name="dateOfReservation" type="datetime-local"
+                            min="2020-12-15T00:00" max="2020-12-25T00:00" class="form-control" id="dateOfReservation">
+                    </div>
+                    <!-- type id="meeting-time"
+                    name="meeting-time" value="2018-06-12T19:30"
+                    -->
+                    <!-- 
+                    <div class="form-group" style="width: 80%;margin: auto;">
+                        <label for="reservationTime">Enter Reservation Time</label>
+                        <input #timeOfReservation="ngModel" ngModel name="timeOfReservation" type="time"
+                            class="form-control" placeholder="Enter No Reservation Time" id="timeOfReservation">
+                    </div> -->
+                    <h2>Kindly Send the Payment on given number</h2>
+
+                    <div style="float: left;"> <b>Account Name: </b></div>
+                    <div style="margin-left: 35%; color:white;"> <b>{{resturant.easyPaisaName}}</b></div>
+
+                    <br>
+                    <div style="float: left;"> <b>EasyPaisa Number: </b></div>
+                    <div style="margin-left: 35%; color:white;"> <b>{{resturant.easyPaisaPhoneNo}}</b></div>
+
+                    <br>
+                    <div class="form-group" style="width: 80%;margin: auto;">
+                        <label for="userEasyPaisaName">Enter your EasyPaisa Name</label>
+                        <input #userEasyPaisaName="ngModel" ngModel name="userEasyPaisaName" type="text"
+                            class="form-control" placeholder="Enter your EasyPaisa Name" id="userEasyPaisaName">
+                    </div>
+
+                    <div class="form-group" style="width: 80%;margin: auto;">
+                        <label for="userEasyPaisaPhoneNo">Enter Your EasyPaisa Phone No</label>
+                        <input #userEasyPaisaPhoneNo="ngModel" ngModel name="userEasyPaisaPhoneNo" type="number"
+                            class="form-control" placeholder="Enter Your EasyPaisa Phone No" id="userEasyPaisaPhoneNo">
+                    </div>
+
+                    <div class="form-group" style="width: 80%;margin: auto;">
+                        <h2>Pay atleast 50% of total bill for confirm reservartion</h2>
+                        <label for="paymentBeforeReservation">Enter your payment for confirm reservation</label>
+                        <input #paymentBeforeReservation="ngModel" ngModel name="paymentBeforeReservation" type="text"
+                            class="form-control" placeholder="Enter Your EasyPaisa Phone No"
+                            id="paymentBeforeReservation">
+                    </div>
+                    <!-- <input value="LOGIN" style="width: 100%; border-radius: 50px;" type="submit" class="btn btn-primary"
+                          (click)=logIn(f)> -->
+
+                </form>
+                <hr>
+                <!--  -->
+                <button class="btn btn-danger" (click)="saveReservation(f,order,userId)">Confirm Reservation</button>
+
+                <!-- <button class="button" style=" background-color:#feb334;border: none;
+                    color: black;
+                    padding: 5px 32px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 10px;
+                    margin: 4px 2px;
+                    ">Confirm Reservation</button> -->
+            </div>
+
+
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,156 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light "
+    style="background: linear-gradient(to bottom, #feb334 0%, #e0730d 100%);">
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <br>
+    <div id="mySidenav" class="sidenav" style="
+        background: linear-gradient(to bottom, #feb334 0%, #e0730d 100%);">
+        <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+
+
+
+        <div style="margin-left: 10px;"><b>Resturants</b></div>
+        <a routerLink="newResturants" class="w3-bar-item w3-button">New Resturants</a>
+
+        <a routerLink="allResturants" class="w3-bar-item w3-button">All Resturants</a>
+        <a routerLink="dineinResturants" class="w3-bar-item w3-button">DineIn Service Resturants</a>
+        <a routerLink="deliveryResturants" class="w3-bar-item w3-button">Delivery Service Resturants</a>
+
+
+
+        <!-- <img src="/assets/background.jpg" alt="Card image cap" style="margin-left: 13%; width: 60%; border-radius: 10%;">
+            <br><br> -->
+        <!-- <h2 style="margin-left: 30px;"><b>{{resturant.name}}</b></h2>
+
+        <div style="margin-left: 10px;"><b>Profile</b></div>
+        <a routerLink="ResturantProfile" class="w3-bar-item w3-button">view Profile</a>
+        <a routerLink="ResturantProfile" class="w3-bar-item w3-button">Update Profile</a>
+
+
+        <div style="margin-left: 10px;"><b>Menu</b></div>
+        <a (click)="getMenu(resturant)" class="w3-bar-item w3-button">View Menu</a>
+        <a (click)="getMenu(resturant)" class="w3-bar-item w3-button">Add Item in Menu</a>
+        <a (click)="getMenu(resturant)" class="w3-bar-item w3-button">Update Item in Menu</a>
+
+
+        <div style="margin-left: 10px;"><b>Reservations</b></div>
+        <a routerLink="newReservationRequest" class="w3-bar-item w3-button">New Reservation
+            Requests <span class="w3-badge w3-red">{{totalRservations}}</span></a>
+        <a routerLink="confirmRservations" class="w3-bar-item w3-button">Confirm Reservations <span
+                class="w3-badge w3-green">{{confirmRservations}}</span> </a>
+        <a routerLink="completedRservations" class="w3-bar-item w3-button">Completed Reservations </a>
+
+        <div style="margin-left: 10px;"><b>Deliveries</b></div>
+        <a routerLink="newDeliveryRequest" class="w3-bar-item w3-button">New Delivery Requests <span
+                class="w3-badge w3-red">{{newDeliveries}}</span></a>
+        <a routerLink="confirmDelivery" class="w3-bar-item w3-button">Confirm Deliveries <span
+                class="w3-badge w3-green">{{confirmDeliveries}}</span> </a>
+        <a routerLink="completedDelivery" class="w3-bar-item w3-button">Completed Delivery </a> -->
+
+
+    </div>
+    <span style="font-size:30px;cursor:pointer" (click)="openNav()">&#9776; </span>
+
+    <div class=" row">
+        <div class="col-sm-12">
+
+            <img src="/assets/logo.png" style="width: 70px; margin-left: 5%;">
+        </div>
+    </div>
+    <a class="navbar-brand" routerLink="/Dashboard"><b>
+            Book My Table</b></a>
+
+</nav>
+
+
+
+
+
+<div class="container-fluid" style="background-color: rgb(224, 224, 217);
+margin: 1px solid black; height: 100%; width: 100%;">
+    <br>
+    <h1 style="font-family: Lucida Handwriting;"><b>Over View</b></h1>
+    <!-- {{reservationTotal}}
+    <br>
+    {{deliveryTotal}} -->
+
+    <div *ngIf="totalRevenue!=0"> </div>
+
+    <div class="container">
+        <div class="row" style="color: white;">
+            <div class="col-sm-3"
+                style="      background: linear-gradient(to left,#571cc400,#D76D77,#dd8951); border-radius: 5%;margin-right: 3%; margin-left: 4%; ">
+                <h3 style="font-family: Lucida Handwriting;"><b>Totall Resturants </b></h3>
+                <i class="fal fa-sparkles"></i>
+                <hr>
+                <p style="font-size:3vw; color: black;"> <b>{{totalResturants}} </b></p>
+            </div>
+            <div class="col-sm-3"
+                style=" background: linear-gradient(to left,#3A1C7100,#D76D77,#FFAF7B); border-radius: 5%; ;margin-right: 3%; margin-left: 2%;">
+                <h3 style="font-family: Lucida Handwriting;"><b> Total Users </b></h3>
+                <hr>
+                <p style="font-size:3vw; color: black;"> <b> {{totalUsers}}</b></p>
+            </div>
+            <div class="col-sm-3"
+                style="  background: linear-gradient(to left,#3A1C7100,#D76D77,#FFAF7B);border-radius: 5%; margin-left: 3%;">
+                <h3 style="font-family: Lucida Handwriting;"><b> Total Revenue </b></h3>
+                <hr>
+                <p style="font-size:3vw; color:brown;"> <b> {{totalRevenue}}</b></p>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <div class="container">
+        <h1 style="font-family: Lucida Handwriting;"><b>Reservations : </b></h1>
+
+        <div class="row" style="color: white;">
+
+            <div class="col-sm-3"
+                style="      background: linear-gradient(to right, #73c8a9, #373b44); border-radius: 5%;margin-right: 3%; margin-left: 2%;">
+
+                <h3 style="font-family: Lucida Handwriting;"><b>Total Reservations Done</b>
+                </h3>
+                <hr>
+                <p style="font-size:3vw; color: black;"> <b> {{completedReservationNumber}}</b></p>
+            </div>
+
+            <div class="col-sm-3"
+                style="  background: linear-gradient(to right, #73c8a9, #373b44);border-radius: 5%;; margin-left: 3%;">
+                <h3 style="font-family: Lucida Handwriting;"><b>Revenue from Reservations </b></h3>
+                <hr>
+                <p style="font-size:3vw; color:brown;"> <b> {{reservationTotal}}</b></p>
+            </div>
+        </div>
+
+        <br>
+        <h1 style="font-family: Lucida Handwriting;"><b>Deliveries</b></h1>
+        <div class="container">
+
+            <div class="row" style="color: white;">
+                <!-- <div class="col-sm-3"
+                style="      background: linear-gradient(to left, #fe8c00, #eea849); border-radius: 5%;margin-right: 3%; margin-left: 4%; ">
+                <h3 style="font-family: Lucida Handwriting;"><b> Delivery Order</b></h3> -->
+                <!-- <hr> -->
+                <!-- <p style="font-size:3vw; color: black;"> <b>{{newDeliveries}}</b> </p> -->
+                <!-- </div> - -->
+                <div class="col-sm-3"
+                    style="      background: linear-gradient(to right, #73c8a9, #373b44); border-radius: 5%;margin-right: 3%; margin-left: 2%;">
+
+                    <h3 style="font-family: Lucida Handwriting;"><b>Total Deliveries Done</b>
+                    </h3>
+                    <hr>
+                    <p style="font-size:3vw; color: black;"> <b> {{completedDeliveriesNumber}}</b></p>
+                </div>
+
+                <div class="col-sm-3"
+                    style="  background: linear-gradient(to right, #73c8a9, #373b44);border-radius: 5%;; margin-left: 3%;">
+                    <h3 style="font-family: Lucida Handwriting;"><b>Revenue from Delivery </b></h3>
+                    <hr>
+                    <p style="font-size:3vw; color:brown;"> <b> {{deliveryTotal}}</b></p>
+                </div>
+            </div>
+        </div>
+    </div>

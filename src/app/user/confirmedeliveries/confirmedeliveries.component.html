@@ -1,0 +1,99 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light "
+    style="background: linear-gradient(to bottom, #feb334 0%, #e0730d 100%);">
+    <app-navbar></app-navbar>
+    <div class=" row">
+        <div class="col-sm-12">
+            <img src="/assets/logo.png" style="width: 70px; margin-left: 5%;">
+        </div>
+    </div>
+    <a class="navbar-brand" routerLink="/Dashboard"><b>
+            Book My Table</b></a>
+
+</nav>
+<br>
+<h1 style="font-family: Lucida Handwriting;">
+    <b>New Delivery Requests:</b></h1>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <table id="customers">
+                <thead>
+                    <tr>
+                        <th>Resturant Name</th>
+                        <th> Resturant Phone</th>
+                        <!-- <th>Your Order</th> -->
+                        <th> Delivery Address</th>
+                        <th> Totall Bill</th>
+                        <!-- <th>Date Of Reservation</th> -->
+                        <th>Delivery Status</th>
+                        <!-- <th>Detials</th> -->
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let delivery of deliveries;">
+                        <!-- (click)="details(reservation)" -->
+                        <td>{{delivery.resturant.resturantName}}</td>
+                        <td>{{delivery.resturant.resturantPhone}}</td>
+                        <td>{{delivery.address}}</td>
+                        <td>{{delivery.totalBill}}</td>
+
+
+
+                        <td>{{delivery.deliveryStatus}}</td>
+
+                        <!-- <button onclick="document.getElementById('id01').style.display='block'"
+                            class="w3-button w3-green w3-large" (click)="details(delivery)">order Details</button>
+
+                        <div id="id01" class="w3-modal">
+                            <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+
+                                <div class="w3-center"><br>
+                                    <span onclick="document.getElementById('id01').style.display='none'"
+                                        class="w3-button w3-xlarge w3-transparent w3-display-topright"
+                                        title="Close Modal">×</span>
+                                </div>
+
+                                <h1>{{orderDetail.address}}</h1>
+
+                            </div>
+                        </div>
+                       <td *ngFor="let order of delivery.order"> -->
+                        <!-- <p> {{order.name}}</p>
+                            <p> {{order.price}} </p>
+                            <hr>
+                            <br>
+                            </td> -->
+                        <!-- <td>{{delivery.dateOfReservation}}</td> -->
+                        <!--Show resturants  Resturant  -->
+                        <!-- <td *ngFor="let order of delivery.order">
+                    <span> {{order.name}}
+                        {{order.price}}</span>
+                </td>
+                <td>{{delivery.deliveryStatus}}</td> -->
+                        <!-- <td style="margin-left: 150px;"> {{user.phone}}</td>
+
+        <td> <button class="btn btn-danger" style="margin-left:40px ;  float: right;">-</button>
+        </td> -->
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<body>

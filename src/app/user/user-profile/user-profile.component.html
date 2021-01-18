@@ -1,0 +1,101 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<nav class="navbar navbar-expand-lg navbar-light bg-light "
+    style="background: linear-gradient(to bottom, #feb334 0%, #e0730d 100%);">
+    <app-navbar></app-navbar>
+    <div class=" row">
+        <div class="col-sm-12">
+            <img src="/assets/logo.png" style="width: 70px; margin-left: 5%;">
+        </div>
+    </div>
+    <a class="navbar-brand" routerLink="/Dashboard"><b>
+            Book My Table</b></a>
+
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <br>
+            <div class="card" style="width: 16rem; height: 7rem; margin-left: 50px;">
+                <img class="card-img-top" src="/assets/salah.jpg" alt="Card image cap" style="width: 100%;">
+
+                <div class="card-body">
+                    <h2 class="card-title">{{user.name}}</h2>
+                    <p class="card-text">
+                        <span style="font-size: 20px;">Address : </span> {{user.address}}
+                    </p>
+                    <p class="card-text">
+                        <span style="font-size: 20px;">Phone : </span> {{user.phone}}
+                    </p>
+                    <!-- <a (click)="updateInfo(user._id,user)" class="btn btn-primary">update info</a> -->
+                    <a (click)="form(user)" class="btn btn-primary" style="background-color:#feb335;">update info</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div *ngIf="showForm==true">
+                <h2>Update Your Details</h2>
+                <form #f="ngForm" style="background-color:transparent;">
+                    <div class="form-group" style="width: 80%;margin: auto;">
+                        <label for="name">Name</label>
+                        <input #name="ngModel" [(ngModel)]="formData.name" name="name" type="text" class="form-control"
+                            placeholder="User Name">
+                    </div>
+                    <div class="form-group" style="width: 80%;margin: auto;">
+                        <label for="phone">Phone</label>
+                        <input #phone="ngModel" [(ngModel)]="formData.phone" name="phone" type="number"
+                            class="form-control" placeholder="Phone No">
+                    </div>
+                    <div class="form-group" style="width: 80%;margin: auto;">
+                        <label for="Address">Address</label>
+                        <input #address="ngModel" [(ngModel)]="formData.address" name="address" type="text"
+                            class="form-control" placeholder="Address">
+                    </div>
+                    <div class="form-group" style="width: 80%;margin: auto;">
+                        <label for="password">Password</label>
+                        <input #password="ngModel" [(ngModel)]="formData.password" name="password" type="text"
+                            class="form-control" placeholder=" Enter Password">
+                    </div>
+
+                    <div>
+                        <input value="updateUser"
+                            style="width: 80%; float:right ; border-radius: 50px; background-color: #feb335;"
+                            type="submit" class="btn btn-primary" (click)=updateUser(user,f)>
+                    </div>
+                    <br>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- <br>
+    <button type="button" class="btn btn-warning" style="background-color:#feb335;"
+        (click)="getReservation(user._id)">Reservation History</button>
+    <br>
+    <hr>
+    <div *ngIf="reservation!=null" class="container-fluid" style="background-color:#feb335;">
+        <div *ngFor="let reserve of reservation">
+            <span style="font-weight: bold;">DateOfReservation :</span>
+            {{reserve.dateOfReservation}}
+            <br>
+            <span style="font-weight: bold;">NoOfPersons :</span>
+            {{reserve.noOfPersons}}
+            <br>
+            <span style="font-weight: bold;">ResturantId :</span>
+            {{reserve.resturantId}}
+            <br>
+            <span style="font-weight: bold;">Your Order Details: </span>
+            <div *ngFor="let order of reserve.order">
+
+                {{order.name}}
+                {{order.price}}
+
+
+            </div>
+            <br>
+            <hr>
+        </div>
+    </div> -->
+    <!-- <md-checkbox>Subscribe</md-checkbox> -->

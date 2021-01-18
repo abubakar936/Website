@@ -1,0 +1,109 @@
+<div class="container-fluid">
+
+  <br>
+  <img src="/assets/background.jpg" style="width: 70%;  margin: auto;">
+  <br>
+  <h1 style="font-family: Lucida Handwriting;"><b>{{resturant.name}}</b></h1>
+
+  <span> &#9679; {{resturant.typeOfResturant}}</span>
+  <span> &#9679;{{resturant.menucategies[0].name}}</span>
+  <span *ngIf="resturant.menucategies[1].name!=null">
+    &#9679; {{resturant.menucategies[1].name}}</span>
+  <br>
+  <br>
+  <button class="btn btn-primary" style="background: linear-gradient(to bottom, #feb334 0%, #e0730d 100%);"
+    (click)=getReviews(resturant._id)> Reviews</button>
+
+  <hr>
+  <ul>
+    <li style="float: left;margin-left:20px;" *ngFor="let categry of resturant.menucategies; 
+         index as i">
+
+      {{categry.name}} </li>
+
+  </ul>
+</div>
+
+
+
+<div class="container-fluid" style="background: linear-gradient(to bottom, #feb334 0%, #e0730d 100%);" id="mySidebar">
+
+  <div class="row">
+    <div class="col-sm-6">
+      <h1 *ngFor="let resturant of resturant.menucategies">
+        <!-- id={{resturant.name}} -->
+        <b> {{resturant.name}}</b>
+
+        <div *ngFor="let menu of menus;">
+          <div *ngIf="menu.categie===resturant.name">
+            <div class="card" style="margin-bottom: 5px;">
+              <div class="container">
+                <div>
+                  <h2><b> {{menu.name}}</b></h2>
+                  <h3>{{menu.discription}}</h3>
+                  <button class="btn btn-danger" style="float:right;" (click)="AddToCart(menu)">Add To Order
+                    List</button>
+                  <span>PKR: {{menu.price}}</span>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </h1>
+
+    </div>
+    <div class="col-sm-6">
+      <h2 class="#news">Order Details</h2>
+      <hr>
+      <h2>Your Order</h2>
+
+
+      <div>
+        <table>
+          <tr>
+            <th>Title</th>
+            <th>Price</th>
+          </tr>
+          <tr *ngFor="let order of order;">
+            <td>{{order.name}}</td>
+            <td style="margin-left: 150px;"> {{order.price}}</td>
+            <td><button class="btn btn-danger" style="margin-left:20px ; float: right;"
+                (click)="AddToCart(order)">+</button>
+              <button class="btn btn-danger" style="margin-left:40px ;  float: right;"
+                (click)="removeToCart(order)">-</button>
+            </td>
+          </tr>
+          <tfoot>
+            <tr>Total Bill
+
+              <td><b>{{total}}</b></td>
+            </tr>
+          </tfoot>
+
+
+
+        </table>
+      </div>
+      <div *ngIf="order.length >=1 ">
+        <br>
+        <form #f="ngForm" style="background-color:transparent;">
+          <h2>Your Address</h2>
+          <div class="form-group" style="width: 80%;margin: auto;">
+            <label for="userEasyPaisaName"> Enter Delivery Address</label>
+            <input #address="ngModel" ngModel name="address" type="text" class="form-control"
+              placeholder="Enter Delivery Address" id="address">
+          </div>
+
+        </form>
+        <br>
+        <button class="btn btn-danger" (click)="saveDelivery(f,order,userId,total)">Confirm
+          Order</button>
+      </div>
+
+
+    </div>
+
+  </div>
+</div>

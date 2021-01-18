@@ -1,0 +1,138 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light "
+    style="background: linear-gradient(to bottom, #feb334 0%, #e0730d 100%);">
+
+    <div class=" row">
+        <div class="col-sm-12">
+            <img src="/assets/logo.png" style="width: 70px; margin-left: 5%;">
+        </div>
+    </div>
+    <a class="navbar-brand" routerLink="/Dashboard"><b>
+            Book My Table</b></a>
+
+</nav>
+<br>
+<h1 style="font-family: Lucida Handwriting;">
+    <b>Confirm Reservations :</b>
+</h1>
+
+
+<div class="container-fluid">
+
+    <table *ngIf="reservations" datatable id="customers" class="row-border hover">
+        <thead>
+            <tr>
+                <th>CustomerName</th>
+                <th>Phone No</th>
+                <th>Date Of Reservation</th>
+                <th>Time Of Reservation</th>
+                <th>Persons</th>
+                <th>Customer Type</th>
+                <th>userEasyPaisaName</th>
+                <th>userEasyPaisaPhoneNo</th>
+                <th>Payment</th>
+                <th>Details</th>
+                <th>Status</th>
+
+
+
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let reservation of reservations;">
+                <td>{{reservation.user.userName}}</td>
+                <td>{{reservation.user.userPhone}}</td>
+                <td>{{reservation.dateOfReservation| date:'dd-MM-yyyy'}}</td>
+                <td>{{reservation.dateOfReservation| date:'EEEE, h:mm a'}}</td>
+                <td>{{reservation.noOfPersons}}</td>
+                <td>{{reservation.newCustomer}}</td>
+                <td>{{reservation.userEasyPaisaName}}</td>
+                <td>{{reservation.userEasyPaisaPhoneNo}}</td>
+                <td>{{reservation.paymentBeforeReservation}}</td>
+
+
+                <td>
+                    <button onclick="document.getElementById('id02').style.display='block'" class="btn btn-success"
+                        #reservationDetail name="reservationDetail" value="reject" type="submit"
+                        (click)="details(reservation)"> Details
+                    </button>
+
+                    <div id="id02" class="w3-modal">
+                        <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+
+                            <div class="w3-center"><br>
+                                <span onclick="document.getElementById('id02').style.display='none'"
+                                    class="w3-button w3-xlarge w3-transparent w3-display-topright"
+                                    title="Close Modal">×</span>
+                            </div>
+                            <div>
+                                <h2>Order Detail</h2>
+
+                                <table style="width: 100%;">
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Price</th>
+                                    </tr>
+                                    <tr *ngFor="let order of reservationdetails.order;">
+                                        <td>{{order.name}}</td>
+                                        <td style="margin-left: 150px;"> {{order.price}}</td>
+
+                                    </tr>
+                                    <tfoot>
+                                        <tr>
+                                            <td><b>Total Bill</b></td>
+
+                                            <td><b>{{reservationdetails.totalBill}}</b></td>
+                                        </tr>
+                                    </tfoot>
+
+
+
+                                </table>
+
+
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </td>
+
+                <!-- <td style="margin-left: 150px;"> {{user.phone}}</td> -->
+                <td>
+
+                    <button #reservationStatus name="reservationStatus" value="complete" class="btn btn-success"
+                        (click)="completeReservation(reservation._id)" type="submit">Reservation Done
+                    </button>
+
+                </td>
+
+
+
+
+
+                <!-- <td>
+                    <div *ngFor="let order of reservation.order">
+
+                        {{order.name}}
+                        {{order.price}}
+
+
+                    </div>
+                </td> -->
+
+
+                <!-- <td style="margin-left: 150px;"> {{user.phone}}</td>
+
+        <td> <button class="btn btn-danger" style="margin-left:40px ;  float: right;">-</button>
+        </td> -->
+            </tr>
+        </tbody>
+    </table>
+</div>

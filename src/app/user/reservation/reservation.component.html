@@ -1,0 +1,29 @@
+<!-- 
+<h1>Resturants </h1>
+<button (click)="seeResturants()">See Resturants List</button>
+
+
+  <div class="row">
+    <div  *ngFor="let resturant of resturant;" class="col-sm-3">
+        <div  class="card" style="width: 18rem;">
+            <img class="card-img-top" src="/assets/logo.png" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{resturant._id}}</h5>
+              <h5 class="card-title">{{resturant.name}}</h5>
+              <p class="card-text"> Location {{resturant.address}}</p>
+               </div>
+        
+    
+    </div> 
+    <button class="btn btn-primary" (click)="getMenu(resturant._id)" >See Menu</button>
+          
+    </div>
+
+   </div>
+   //place popup here or model this is displaying in the last of the page 
+   <ul>
+     <li  *ngFor="let menu of menu;">
+       {{menu.name}}
+      <button class="btn btn-danger">+</button> 
+      </li>
+   </ul> -->

@@ -1,0 +1,74 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<nav class="navbar navbar-expand-lg navbar-light bg-light "
+    style="background: linear-gradient(to bottom, #feb334 0%, #e0730d 100%);">
+
+    <div class=" row">
+        <div class="col-sm-12">
+            <img src="/assets/logo.png" style="width: 70px; margin-left: 5%;">
+        </div>
+    </div>
+    <a class="navbar-brand" routerLink="/Dashboard"><b>
+            Book My Table</b></a>
+
+</nav>
+<br>
+<div class="container">
+
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="/assets/background.jpg" alt="Card image cap" style="width: 285px;">
+
+                <div class="card-body">
+                    <h2 class="card-title">{{resturant.name}}</h2>
+                    <p class="card-text">
+                        <span style="font-size: 20px;">Address : </span> {{resturant.location}}
+                    </p>
+                    <p class="card-text">
+                        <span style="font-size: 20px;">Phone : </span> {{resturant.phone}}
+                    </p>
+                    <!-- <a (click)="updateInfo(user._id,user)" class="btn btn-primary">update info</a> -->
+                    <a (click)="form(resturant)" class="btn btn-primary" style="background-color:#feb335;">update
+                        info</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div *ngIf="showForm==true">
+                <h2>Resturant Details</h2>
+                <form #f="ngForm" style="background-color:transparent;">
+                    <div class="form-group" style="width: 80%;margin: auto;">
+                        <label for="name">Name</label>
+                        <input #name="ngModel" [(ngModel)]="resturant.name" name="name" type="text" class="form-control"
+                            placeholder="Resturant Name">
+                    </div>
+                    <div class="form-group" style="width: 80%;margin: auto;">
+                        <label for="phone">Phone</label>
+                        <input #phone="ngModel" [(ngModel)]="resturant.phone" name="phone" type="number"
+                            class="form-control" placeholder="Phone No">
+                    </div>
+                    <div class="form-group" style="width: 80%;margin: auto;">
+                        <label for="location">Location</label>
+                        <input #location="ngModel" [(ngModel)]="resturant.location" name="location" type="text"
+                            class="form-control" placeholder="Location">
+                    </div>
+                    <div class="form-group" style="width: 80%;margin: auto;">
+                        <label for="password">Password</label>
+                        <input #password="ngModel" [(ngModel)]="resturant.password" name="password" type="text"
+                            class="form-control" placeholder="password">
+                    </div>
+
+                    <br>
+                    <div>
+                        <input value="updateResturant"
+                            style="width: 100%; border-radius: 50px; background-color: #feb335;" type="submit"
+                            class="btn btn-primary" (click)=update(resturant._id,f)>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

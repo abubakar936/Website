@@ -1,0 +1,196 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light "
+    style="background: linear-gradient(to bottom, #feb334 0%, #e0730d 100%);">
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <br>
+    <div id="mySidenav" class="sidenav" style="
+        background: linear-gradient(to bottom, #feb334 0%, #e0730d 100%);">
+        <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+        <!-- <img src="/assets/background.jpg" alt="Card image cap" style="margin-left: 13%; width: 60%; border-radius: 10%;">
+            <br><br> -->
+        <h2 style="margin-left: 30px;"><b>{{resturant.name}}</b></h2>
+
+        <div style="margin-left: 10px;"><b>Profile</b></div>
+        <a routerLink="ResturantProfile" class="w3-bar-item w3-button">view Profile</a>
+        <a routerLink="ResturantProfile" class="w3-bar-item w3-button">Update Profile</a>
+
+
+        <div style="margin-left: 10px;"><b>Menu</b></div>
+        <a (click)="getMenu(resturant)" class="w3-bar-item w3-button">View Menu</a>
+        <a (click)="getMenu(resturant)" class="w3-bar-item w3-button">Add Item in Menu</a>
+        <a (click)="getMenu(resturant)" class="w3-bar-item w3-button">Update Item in Menu</a>
+
+
+        <div style="margin-left: 10px;"><b>Reservations</b></div>
+        <a routerLink="newReservationRequest" class="w3-bar-item w3-button">New Reservation
+            Requests <span class="w3-badge w3-red">{{totalRservations}}</span></a>
+        <a routerLink="confirmRservations" class="w3-bar-item w3-button">Confirm Reservations <span
+                class="w3-badge w3-green">{{confirmRservations}}</span> </a>
+        <a routerLink="completedRservations" class="w3-bar-item w3-button">Completed Reservations </a>
+
+        <div style="margin-left: 10px;"><b>Deliveries</b></div>
+        <a routerLink="newDeliveryRequest" class="w3-bar-item w3-button">New Delivery Requests <span
+                class="w3-badge w3-red">{{newDeliveries}}</span></a>
+        <a routerLink="confirmDelivery" class="w3-bar-item w3-button">Confirm Deliveries <span
+                class="w3-badge w3-green">{{confirmDeliveries}}</span> </a>
+        <a routerLink="completedDelivery" class="w3-bar-item w3-button">Completed Delivery </a>
+        <a routerLink="/LogIn/Resturant" class="w3-bar-item w3-button"> Logout </a>
+
+
+    </div>
+    <span style="font-size:30px;cursor:pointer" (click)="openNav()">&#9776; </span>
+
+    <div class=" row">
+        <div class="col-sm-12">
+
+            <img src="/assets/logo.png" style="width: 70px; margin-left: 5%;">
+        </div>
+    </div>
+    <a class="navbar-brand" routerLink="/Dashboard"><b>
+            Book My Table</b></a>
+
+</nav>
+
+
+
+
+
+<div class="container">
+    <br>
+    <h1 style="font-family: Lucida Handwriting;"><b>Reservations</b></h1>
+    <div class="row" style="color: white;">
+        <div class="col-sm-3"
+            style="      background: linear-gradient(to right, #ff9966, #ff5e62); border-radius: 5%;margin-right: 3%; margin-left: 4%; ">
+            <h3 style="font-family: Lucida Handwriting;"><b>New Reservations </b></h3>
+            <i class="fal fa-sparkles"></i>
+            <hr>
+            <p style="font-size:3vw; color: black;"> <b>{{totalRservations}} </b></p>
+        </div>
+        <div class="col-sm-3"
+            style=" background: linear-gradient(to right, #ff9966, #ff5e62); border-radius: 5%; ;margin-right: 3%; margin-left: 2%;">
+            <h3 style="font-family: Lucida Handwriting;"><b> Confirm Reservations</b></h3>
+            <hr>
+            <p style="font-size:3vw; color: black;"> <b> {{confirmRservations}}</b></p>
+        </div>
+        <div class="col-sm-3"
+            style="  background: linear-gradient(to right, #ff9966, #ff5e62);border-radius: 5%; margin-left: 3%;">
+            <h3 style="font-family: Lucida Handwriting;"><b>Reservations Income </b></h3>
+            <hr>
+            <p style="font-size:3vw; color:rgb(199, 21, 21);"> <b> {{reservationTotal}}</b></p>
+        </div>
+    </div>
+    <br>
+    <h1 style="font-family: Lucida Handwriting;"><b>Deliveries</b></h1>
+    <div class="container">
+
+        <div class="row" style="color: white;">
+            <div class="col-sm-3"
+                style="      background: linear-gradient(to right, #ff9966, #ff5e62); border-radius: 5%;margin-right: 3%; margin-left: 4%; ">
+                <h3 style="font-family: Lucida Handwriting;"><b> Delivery Order</b></h3>
+                <hr>
+                <p style="font-size:3vw; color: black;"> <b>{{newDeliveries}}</b> </p>
+            </div>
+            <div class="col-sm-3"
+                style="      background: linear-gradient(to right, #ff9966, #ff5e62); border-radius: 5%;margin-right: 3%; margin-left: 2%;">
+
+                <h3 style="font-family: Lucida Handwriting;"><b>Confirm Deliveries</b>
+                </h3>
+                <hr>
+                <p style="font-size:3vw; color: black;"> <b> {{confirmDeliveries}}</b></p>
+            </div>
+
+            <div class="col-sm-3"
+                style="  background: linear-gradient(to right, #ff9966, #ff5e62);border-radius: 5%;; margin-left: 3%;">
+                <h3 style="font-family: Lucida Handwriting;"><b>Delivery Income </b></h3>
+                <hr>
+                <p style="font-size:3vw; color:rgb(199, 21, 21);"> <b> {{deliveryTotal}}</b></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- 
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+
+<div class="w3-sidebar w3-black w3-bar-block w3-card w3-animate-left " style="display:none;
+background: linear-gradient(to bottom, #feb334 0%, #e0730d 100%);" id="mySidebar">
+    <button class="w3-bar-item w3-button w3-large" (click)="w3_close()">Close</button>
+    <br>
+    <H1>Resturant Panel</H1>
+    <img src="/assets/background.jpg" alt="Card image cap" style="width: 285px;  border-radius: 50%;">
+
+    <h2 class="card-title">{{resturant.name}}</h2>
+    <p class="card-text">
+
+        <a (click)="getMenu(resturant)">View Menu</a>
+        <br>
+        <a (click)="getMenu(resturant)">Add Item in Menu</a>
+        <br>
+        <a (click)="getMenu(resturant)">Update Item in Menu</a>
+        <br>
+        <br>
+        <a routerLink="ResturantProfile">view Profile</a>
+        <br>
+        <br>
+        <a routerLink="ResturantProfile">Update Profile</a>
+        <br>
+        <br>
+        <a class="w3-bar-item w3-button">Reservations</a>
+        <a routerLink="newReservationRequest" class="w3-bar-item w3-button">New Reservation Requests</a>
+        <a routerLink="confirmRservations" class="w3-bar-item w3-button">Confirm Reservations </a>
+        <a routerLink="completedRservations" class="w3-bar-item w3-button">Completed Reservations </a>
+
+
+
+
+
+
+        <a href="#" class="w3-bar-item w3-button">Link 1</a>
+        <a href="#" class="w3-bar-item w3-button">Link 2</a>
+        <a href="#" class="w3-bar-item w3-button">Link 3</a>
+</div>
+
+
+<div id="main">
+
+
+    <div class="w3-teal " style="background-image: linear-gradient(#fc4a1a,  #f7b733)">
+        <button id="openNav" class="w3-button   w3-teal w3-xlarge" (click)="w3_open()">&#9776;
+
+
+        </button>
+        <div class="w3-container w3-black" style=" background-image: linear-gradient(#feb334, #feb100)">
+
+        </div>
+    </div>
+
+
+ -->
+
+
+<!-- <div class=" container">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4" class="detail" style=" background-image: linear-gradient(#feb334, #feb100);
+                width: 100px;
+                height: 70px;">
+                    hdhdhhd
+                </div>
+                <div class=" col-sm-4" class="detail">\d
+                </div>
+                <div class="col-sm-4" class="detail">ddd
+                </div>
+            </div>
+        </div> -->

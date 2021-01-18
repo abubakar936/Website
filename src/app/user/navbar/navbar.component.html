@@ -1,0 +1,25 @@
+<div id="mySidenav" class="sidenav" style="
+background: linear-gradient(to bottom, #feb334 0%, #e0730d 100%);">
+    <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+    <br>
+    <h2 style="margin-left: 30px;"><b>{{user.name}}</b></h2>
+
+    <div style="margin-left: 10px;"><b>Profile</b></div>
+    <a routerLink="/Profile" class="w3-bar-item w3-button">Profile</a>
+    <a routerLink="/Profile" class="w3-bar-item w3-button">Update Profile </a>
+    <div style="margin-left: 10px;"><b>Reservations</b></div>
+    <a routerLink="newReservationRequest" class="w3-bar-item w3-button">New Reservation Requests</a>
+    <a routerLink="confirmReservations" class="w3-bar-item w3-button">Confirm Reservations</a>
+    <a routerLink="reservationHistory" class="w3-bar-item w3-button">Reservations History </a>
+    <!-- // <a routerLink="cenceledReservations" class="w3-bar-item w3-button">Reservations History </a> -->
+
+    <div style="margin-left: 10px;"><b>Deliveries</b></div>
+    <a routerLink="newDeliveryRequest" class="w3-bar-item w3-button">New Delivery Requests</a>
+    <a routerLink="confirmdeliveries" class="w3-bar-item w3-button">Confirm Deliveries</a>
+    <a routerLink="AllDeliveries" class="w3-bar-item w3-button">Deliveries History </a>
+
+    <a routerLink="" class="w3-bar-item w3-button"> logout </a>
+
+
+</div>
+<span style="font-size:30px;cursor:pointer" (click)="openNav()">&#9776; </span>

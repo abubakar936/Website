@@ -1,0 +1,51 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<nav class="navbar navbar-expand-lg navbar-light bg-light "
+    style="background: linear-gradient(to bottom, #feb334 0%, #e0730d 100%);">
+
+    <div class=" row">
+        <div class="col-sm-12">
+            <img src="/assets/logo.png" style="width: 70px; margin-left: 5%;">
+        </div>
+    </div>
+    <a class="navbar-brand" routerLink="/Dashboard"><b>
+            Book My Table</b></a>
+
+</nav>
+<br>
+<h1 style="font-family: Lucida Handwriting;">
+    <b>Confirm deliveries :</b>
+</h1>
+
+
+<div class="container-fluid">
+
+    <table *ngIf="deliveries" id="customers" datatable class="row-border hover">
+        <thead>
+            <tr>
+                <th>Customer Name</th>
+                <th>Phone No</th>
+                <th>Date Of deliverie</th>
+                <th>Address</th>
+                <th>Delivery Status</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr *ngFor="let deliverie of deliveries;">
+                <td>{{deliverie.user.userName}}</td>
+                <td>{{deliverie.user.userPhone}}</td>
+                <td>{{deliverie.dateOfReservation}}</td>
+                <td>{{deliverie.address}}</td>
+                <td>
+
+
+                    <button #reservationStatus name="reservationStatus" value="confirm" class="btn btn-success"
+                        (click)="completedDelivery(deliverie._id)" type="submit"> Complete
+                    </button>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>

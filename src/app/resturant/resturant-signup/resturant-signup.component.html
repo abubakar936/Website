@@ -1,0 +1,203 @@
+<div class="container-fluid">
+    <div class="row" style="background-color:transparent;">
+        <div class="col-sm-6" style="margin: 5px 0;">
+            <img src="/assets/logo.png" style="width: 70px; margin-left: 5%;">
+            <span class="navbar-brand">Book My Table</span>
+        </div>
+
+    </div>
+</div>
+
+
+
+<div class="container" style=" position: relative;
+width: 100%;">
+    <img src="/assets/signup.jpg" style="width:100%; position: relative;">
+    <div style="position: absolute;  top: 5%;
+    left: 5%; background-color: white; width: 40%; padding-top: 15px;">
+        <div>
+
+            <div class="container">
+
+                <div>
+
+                    <h2><b> Resturant SIGNUP </b></h2>
+                    <form #f="ngForm" style="background-color: #feb334;border-radius: 25px;"
+                        enctype="multipart/form-data" method="POST">
+
+                        <div class="form-group" style="width: 80%;margin: auto;">
+                            <label for="name" style=" margin-top: 12px;"><b>Enter Resturant Name</b></label>
+                            <input style=" border-width: 0; border-radius: 50px;" class="input" #name="ngModel" ngModel
+                                name="name" type="text" class="form-control" placeholder="Enter Your Name " id="name"
+                                required minlength="3">
+                        </div>
+                        <div style="width: 80%;margin: auto; background-color:red;color: white; border-radius: 25px "
+                            *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+
+                            <div *ngIf="name.errors.required">
+                                Name is required.
+                            </div>
+                            <div *ngIf="name.errors.minlength">
+                                Name cannot be less than 3 characters.
+                            </div>
+                        </div>
+                        <div class="form-group" style="width: 80%;margin: auto;">
+
+                            <label for="phone" style=" margin-top: 12px;"><b>Enter Your Phone</b></label>
+                            <input style=" border-width: 0; border-radius: 50px;" class="input" #phone="ngModel" ngModel
+                                name="phone" type="text" class="form-control" placeholder="Enter Your Phone " id="phone"
+                                required minlength="3">
+                        </div>
+                        <div style="width: 80%;margin: auto; background-color:red;color: white; border-radius: 25px "
+                            *ngIf="name.invalid && (phone.dirty || phone.touched)" class="alert alert-danger">
+
+                            <div *ngIf="phone.errors.required">
+                                phone is required.
+                            </div>
+                            <div *ngIf="phone.errors.minlength">
+                                phone cannot be less than 11 characters.
+                            </div>
+                        </div>
+                        <div class="form-group" style="width: 80%;margin: auto;">
+                            <label for="email" style=" margin-top: 12px;"><b>Enter Your Email</b></label>
+                            <input style=" border-width: 0; border-radius: 50px;" class="input" #email="ngModel" ngModel
+                                name="email" type="text" class="form-control" placeholder="Enter Your Email "
+                                id="email">
+                        </div>
+
+                        <div class="form-group" style="width: 80%;margin: auto;">
+                            <label for="password" style=" margin-top: 12px;"><b>Password:</b></label>
+                            <input required minlength="8" style="border-width: 0; border-radius: 50px;"
+                                class="form-control" #password="ngModel" ngModel name="password" type="password"
+                                class="form-control" placeholder="Enter Your Password " id="password">
+
+                        </div>
+                        <div style="width: 80%;margin: auto; background-color:red;color: white; border-radius: 25px "
+                            *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+
+                            <div *ngIf="password.errors.required">
+                                password is required.
+                            </div>
+                            <div *ngIf="password.errors.minlength">
+                                password must have atleast {{password.errors.minlength.requiredLength}} characters
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="width: 80%;margin: auto;">
+                            <label for="name" style=" margin-top: 12px;"><b>Enter Your Location</b></label>
+                            <input style=" border-width: 0; border-radius: 50px;" class="input" #location="ngModel"
+                                ngModel name="location" type="text" class="form-control"
+                                placeholder="Enter Your Location " id="location" required minlength="3">
+                        </div>
+                        <div style="width: 80%;margin: auto; background-color:red;color: white; border-radius: 25px "
+                            *ngIf="location.invalid && (location.dirty || location.touched)" class="alert alert-danger">
+
+                            <div *ngIf="location.errors.required">
+                                location is required.
+                            </div>
+                            <div *ngIf="location.errors.minlength">
+                                location cannot be less than 3 characters.
+                            </div>
+                        </div>
+                        <div>
+                            <label for="cars" style="margin-left: 55px; margin-top: 10px;"><b>Services</b></label>
+
+                            <select name="services" style="width: 80%;margin: auto;" id="services" multiple
+                                #services="ngModel" ngModel class=" form-control">
+                                <!-- <option value="100">100</option> -->
+                                <option>DineIn</option>
+                                <option>Delivery</option>
+
+                            </select>
+
+                        </div>
+                        <label for="typeOfResturant" style="margin-left: 55px; margin-top: 10px;"><b>Type Of
+                                Resturant</b></label>
+
+                        <select style="width: 80%;margin: auto;" id="typeOfResturant" #typeOfResturant="ngModel" ngModel
+                            name="typeOfResturant" class="form-control">
+                            <!-- <option value="100">100</option> -->
+                            <option value="Chinees">Chinees</option>
+                            <option value="Continantal">Continantal</option>
+                            <option value="Arabic">Arabic</option>
+                            <option value="Dasi Food">Dasi Food</option>
+                            <option value="Fast Food">Fast Food</option>
+                        </select>
+
+                        <label for="averagePriceOfProduct" style="margin-left: 55px; margin-top: 10px;"><b>Average Price
+                                Of food In
+                                Menu</b></label>
+
+                        <select style="width: 80%;margin: auto;" name="averagePriceInMenu" id="averagePriceInMenu"
+                            #averagePriceOfProduct="ngModel" ngModel class="form-control">
+                            <!-- <option value="100">100</option> -->
+                            <option value="100">100</option>
+                            <option value="500">500</option>
+                            <option value="1000">1000</option>
+                            <option value="1500">1500</option>
+                        </select>
+                        <h2>Enter Resturant`s EasyPaise Account Detail</h2>
+                        <div class="form-group" style="width: 80%;margin: auto;">
+                            <label for="easyPaisaName" style=" margin-top: 12px;"><b>Enter Your EasyPaisa
+                                    Name</b></label>
+                            <input style=" border-width: 0; border-radius: 50px;" class="input" #easyPaisaName="ngModel"
+                                ngModel name="easyPaisaName" type="text" class="form-control"
+                                placeholder="Enter Your EasyPaisa Account Name " id="easyPaisaName" required
+                                minlength="3">
+                        </div>
+                        <div style="width: 80%;margin: auto; background-color:red;color: white; border-radius: 25px "
+                            *ngIf="easyPaisaName.invalid && (easyPaisaName.dirty || easyPaisaName.touched)"
+                            class="alert alert-danger">
+
+                            <div *ngIf="easyPaisaName.errors.required">
+                                Name is required.
+                            </div>
+                            <div *ngIf="easyPaisaName.errors.minlength">
+                                Name cannot be less than 3 characters.
+                            </div>
+                        </div>
+                        <div class="form-group" style="width: 80%;margin: auto;">
+
+                            <label for="easyPaisaPhoneNo" style=" margin-top: 12px;">
+                                <b>Enter Your EasyPaisa Phone No </b></label>
+                            <input style=" border-width: 0; border-radius: 50px;" class="input"
+                                #easyPaisaPhoneNo="ngModel" ngModel name="easyPaisaPhoneNo" type="number"
+                                class="form-control" placeholder="Enter Your EasyPaisa Phone No " id="easyPaisaPhoneNo"
+                                required minlength="3">
+                        </div>
+                        <div style="width: 80%;margin: auto; background-color:red;color: white; border-radius: 25px "
+                            *ngIf="easyPaisaPhoneNo.invalid && (easyPaisaPhoneNo.dirty || easyPaisaPhoneNo.touched)"
+                            class="alert alert-danger">
+
+                            <div *ngIf="easyPaisaPhoneNo.errors.required">
+                                phone is required.
+                            </div>
+                            <div *ngIf="easyPaisaPhoneNo.errors.minlength">
+                                phone cannot be less than 11 characters.
+                            </div>
+                        </div>
+                        <!-- <div class="form-group" style="width: 80%;margin: auto;">
+                            <label for="file" style=" margin-top: 12px;"><b>image</b></label>
+                            <input style=" border-width: 0; border-radius: 50px;" class="input" #image="ngModel" ngModel
+                                name="file" type="file" class="form-control" id="file">
+                        </div> -->
+                        <br>
+                        <input value="Register" style="width: 80%; margin-left: 50px; border-radius: 50px; "
+                            type="submit" class="btn btn-primary" (click)="registerResturant(f)">
+                        <br>
+                        <div>
+                            <br>
+                            <div>
+                                <a style="padding-bottom: 20px; width: 80%; margin-left: 50px; border-radius: 50px;"
+                                    routerLink="/LogIn/Resturant"><b>Already
+                                        Have
+                                        an account ? login here</b></a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
